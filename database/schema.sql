@@ -28,6 +28,7 @@ CREATE TABLE public.items (
     itemPrice INTEGER,
     itemName TEXT,
     playerID INTEGER,
+    gold INTEGER,
 CONSTRAINT items_constraint
     FOREIGN KEY(playerID)
     REFERENCES public.players(playerID)
@@ -52,3 +53,18 @@ CREATE ROLE castlequest WITH
     NOCREATEROLE
     NOREPLICATION
     PASSWORD 'HudenBurger23';
+
+    CREATE INDEX peopleusers ON public.users (firstName, lastName, playerID);
+
+    CREATE INDEX characters ON public.players (playerID, playerName, charName, xp, gold);
+
+    CREATE INDEX magicitems ON public.items (itemID, itemName, quantity, playerID);
+
+    CREATE INDEX clans ON public.guilds (guildName, playerID, playerName);
+
+    CREATE VIEW stats AS 
+    SELECT playerName, charName, character, xp, gold, hp
+    FROM public.players
+    WHERE xp < 10000000 
+    Order by xp DESC
+    LIMIT 10;

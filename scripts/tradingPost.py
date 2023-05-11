@@ -23,3 +23,9 @@ itemToSell = input("What would you like to sell? ")
 #Give them the gold
 
 #Take it out of their inventory
+
+
+
+#show price for each item with item stats with a sell or buy prompt.
+#if they sell then item will be taken out of their inventory and respective gold will be added to inventory.
+#if they buy then the respective gold will be subtracted from inventory and item will be added to inventory.
